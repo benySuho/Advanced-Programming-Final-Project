@@ -31,7 +31,7 @@ public class Graph extends ArrayList<Node> {
 
         TopicManagerSingleton.TopicManager tm = TopicManagerSingleton.get();
 
-        for (Topic topic : TopicManagerSingleton.get().getTopics()) {
+        for (Topic topic : tm.getTopics()) {
             Node topicNode = createTopicNode(topic, topicMap);
             for (Agent a : topic.subs) {
                 Node agentNode = createAgentNode(a, agentMap);

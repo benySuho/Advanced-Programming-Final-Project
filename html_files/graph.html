@@ -3,38 +3,34 @@
     <head>
         <meta charset="UTF-8">
         <title>Graph</title>
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        <style>
+            body {
+                width: 50%;
+                height: 50%;
+                margin: 0;
+            }
+            .link {
+                fill: none;
+                stroke: #666;
+                stroke-width: 1.5px;
+            }
+            .node circle {
+                fill: #ccc;
+                stroke: #333;
+                stroke-width: 1.5px;
+            }
+            .node text {
+                font: 10px sans-serif;
+                pointer-events: none;
+                text-anchor: middle;
+            }
+        </style>
     </head>
     <body>
-        <script src="/scripts/graph.js"></script>
-        <canvas id="graphCanvas" width="500" height="500"></canvas>
         <script>
-            // const graphData = <!--GRAPH_DATA-->;
-            const graphData = [{"id":"3a4de2f4",
-                "type":"Topic",
-                "name":"A",
-                "edges":["5b0f5b98"]},
-                {"id":"5b0f5b98",
-                    "type":"Agent",
-                    "name":"PlusAgent",
-                    "edges":[]},
-                {"id":"255ca0ba",
-                    "type":"Topic",
-                    "name":"B",
-                    "edges":["5b0f5b98"]},
-                {"id":"59c16011",
-                    "type":"Topic",
-                    "name":"C",
-                    "edges":["cce739f"]},
-                {"id":"cce739f",
-                    "type":"Agent",
-                    "name":"IncAgent",
-                    "edges":[]},
-                {"id":"2dbc3a05",
-                    "type":"Agent",
-                    "name":"PlusAgent",
-                    "edges":["59c16011"]},
-            ];
-            drawGraph(graphData);
+            const graphData = <!--GRAPH_DATA-->;
         </script>
+        <script src="/app/scripts/graph.js"></script>
     </body>
 </html>
