@@ -34,6 +34,7 @@ public class GenericConfig implements Config {
      */
     @Override
     public void create() {
+        TopicManagerSingleton.TopicManager tm = TopicManagerSingleton.get();
         List<String> linesList = new ArrayList<>();
         try {
             // Read all lines from the file
@@ -55,15 +56,15 @@ public class GenericConfig implements Config {
             if (agent == null) {
                 continue;
             }
-            ParallelAgent pa = new ParallelAgent(agent, 10);
-
-            // Subscribe the parallel agent to the specified topics
-            // instead of original agent
-            for (int j = 0; j < subs.length; j++) {
-                TopicManagerSingleton.get().getTopic(subs[j]).subscribe(pa);
-                TopicManagerSingleton.get().getTopic(subs[j]).unsubscribe(agent);
-            }
-            agents.add(pa);
+//            ParallelAgent pa = new ParallelAgent(agent, 10);
+//
+//            // Subscribe the parallel agent to the specified topics
+//            // instead of original agent
+//            for (int j = 0; j < subs.length; j++) {
+//                tm.getTopic(subs[j]).subscribe(pa);
+//                tm.getTopic(subs[j]).unsubscribe(agent);
+//            }
+//            agents.add(pa);
         }
     }
 

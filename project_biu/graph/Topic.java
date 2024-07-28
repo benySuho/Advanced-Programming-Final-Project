@@ -7,6 +7,7 @@ public class Topic {
     public final String name;
     Set<Agent> subs;
     Set<Agent> pubs;
+    Message lastMsg;
 
     /**
      * Constructs a new Topic with the given name.
@@ -32,6 +33,7 @@ public class Topic {
     }
 
     public void publish(Message m) {
+        lastMsg = m; // Update last message received by the topic
         for (Agent sub : subs) {
             sub.callback(this.name, m); // Send message
         }
@@ -43,5 +45,12 @@ public class Topic {
 
     public void removePublisher(Agent a) {
         pubs.remove(a);
+    }
+
+    public String getLastMsg() {
+        if (lastMsg == null) {
+            return null;
+        }
+        return lastMsg.asText;
     }
 }
