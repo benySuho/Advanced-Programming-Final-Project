@@ -32,8 +32,13 @@ public class TopicDisplayer implements Servlet {
             toClient.write("<tr><td>".getBytes());
             toClient.write(topic.name.getBytes());
             toClient.write("</td><td>".getBytes());
-            if (topic.getLastMsg() != null)
-                toClient.write(topic.getLastMsg().getBytes());
+            Message msg;
+            if ((msg = topic.getLastMsg()) != null) {
+                if(Double.isNaN(msg.asDouble))
+                    toClient.write(msg.data);
+                else
+                    toClient.write(String.format("%.02f", msg.asDouble).getBytes());
+            }
             toClient.write("</td></tr>".getBytes());
         }
         toClient.write("</table>".getBytes());

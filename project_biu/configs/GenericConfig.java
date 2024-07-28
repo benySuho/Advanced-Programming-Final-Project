@@ -48,23 +48,12 @@ public class GenericConfig implements Config {
         }
         agents = new HashSet<>();
         for (int i = 0; i < linesList.size() / 3; i++) {
-            String agentClass = linesList.get(i * 3);
+            String agentClass = "graph."+linesList.get(i * 3).split("\\.")[1];
             String[] subs = linesList.get(i * 3 + 1).split(",");
             String[] pubs = linesList.get(i * 3 + 2).split(",");
 
             Agent agent = (Agent) dynamicallyCreateAgentClass(agentClass, subs, pubs);
-            if (agent == null) {
-                continue;
-            }
-//            ParallelAgent pa = new ParallelAgent(agent, 10);
-//
-//            // Subscribe the parallel agent to the specified topics
-//            // instead of original agent
-//            for (int j = 0; j < subs.length; j++) {
-//                tm.getTopic(subs[j]).subscribe(pa);
-//                tm.getTopic(subs[j]).unsubscribe(agent);
-//            }
-//            agents.add(pa);
+            agents.add(agent);
         }
     }
 

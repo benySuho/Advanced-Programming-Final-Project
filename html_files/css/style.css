@@ -4,12 +4,14 @@ html, body {
 }
 
 iframe {
+    min-height: 250px;
     height: 100%;
     border: none;
 }
 
 #graphFrame {
     width: 60%;
+    height: 100%;
 }
 
 #valuesFrame{

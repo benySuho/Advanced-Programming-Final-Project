@@ -3,33 +3,38 @@
     <head>
         <meta charset="UTF-8">
         <title>Graph</title>
-        <script src="https://d3js.org/d3.v7.min.js"></script>
-        <style>
-            body {
-                width: 50%;
-                height: 50%;
-                margin: 0;
-            }
-            .link {
-                fill: none;
-                stroke: #666;
-                stroke-width: 1.5px;
-            }
-            .node circle {
-                fill: #ccc;
-                stroke: #333;
-                stroke-width: 1.5px;
-            }
-            .node text {
-                font: 10px sans-serif;
-                pointer-events: none;
-                text-anchor: middle;
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" href="/app/css/graph.css">
+        <script src="/app/scripts/d3.js"></script>
     </head>
     <body>
+    <svg id="svgID" ></svg>
         <script>
             const graphData = <!--GRAPH_DATA-->;
+            // const graphData = [{"id":"48b03f53",
+            //     "type":"Topic",
+            //     "name":"A",
+            //     "edges":["43eafdce"]},
+            //     {"id":"43eafdce",
+            //         "type":"Agent",
+            //         "name":"PlusAgent",
+            //         "edges":["68f31fcc"]},
+            //     {"id":"1ab7af1a",
+            //         "type":"Topic",
+            //         "name":"B",
+            //         "edges":["43eafdce"]},
+            //     {"id":"68f31fcc",
+            //         "type":"Topic",
+            //         "name":"C",
+            //         "edges":["53b451b8"]},
+            //     {"id":"53b451b8",
+            //         "type":"Agent",
+            //         "name":"IncAgent",
+            //         "edges":["47a4c28d"]},
+            //     {"id":"47a4c28d",
+            //         "type":"Topic",
+            //         "name":"D",
+            //         "edges":[]},
+            // ];
         </script>
         <script src="/app/scripts/graph.js"></script>
     </body>
