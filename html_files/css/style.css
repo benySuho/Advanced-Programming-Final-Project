@@ -1,0 +1,18 @@
+html, body {
+    font-family: Arial, sans-serif;
+    height: 90%;
+}
+
+iframe {
+    height: 100%;
+    border: none;
+}
+
+#graphFrame {
+    width: 60%;
+}
+
+#valuesFrame{
+    width: 10%;
+    float: right;
+}
