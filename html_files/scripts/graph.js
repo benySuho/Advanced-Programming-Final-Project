@@ -1,7 +1,8 @@
 const nodes = graphData.map(node => ({
     id: node.id,
     name: node.name,
-    type: node.type
+    type: node.type,
+    value: ""
 }));
 
 const links = [];
@@ -11,6 +12,13 @@ graphData.forEach(node => {
     });
 });
 
+/**
+ Calculates the coordinates for placing nodes in a circular layout.
+ @param {number} n - The number of nodes to place in the circle.
+ @param {number} width - The width of the container where the nodes will be placed.
+ @param {number} height - The height of the container where the nodes will be placed.
+ @returns {Array} An array of objects, each containing the x and y coordinates for a node.
+ */
 function getCircleCoordinates(n, width, height) {
     const coordinates = [];
     const angleStep = (2 * Math.PI) / n;
@@ -26,6 +34,11 @@ function getCircleCoordinates(n, width, height) {
     return coordinates;
 }
 
+/**
+ This function calculates the width and height of an HTML element with a given class name.
+ @param {string} className - The class name of the HTML element whose size needs to be calculated.
+ @returns {Object} An object containing the width and height of the HTML element.
+ */
 function getElementSizeByClass(className) {
     // Create a temporary element
     const tempElement = document.createElement('div');
@@ -44,6 +57,13 @@ function getElementSizeByClass(className) {
     return {"width": width, "height": height};
 }
 
+/**
+ Calculates the end coordinates of a link based on the source and target nodes.
+ @param {Object} source - The source node object with properties: x, y, and type.
+ @param {Object} target - The target node object with properties: x, y, and type.
+ @param {boolean} isX - A flag indicating whether to calculate the x-coordinate (true) or y-coordinate (false).
+ @returns {number} The calculated x or y coordinate of the link end.
+ */
 function calculateLinkEnd(source, target, isX) {
     const dx = target.x - source.x;
     const dy = target.y - source.y;
@@ -58,12 +78,10 @@ function calculateLinkEnd(source, target, isX) {
     }
 }
 
-// var iframe = document.getElementById("graphFrame");
 var iframe = window.frameElement;
 const width = iframe.offsetWidth - 20;
 const height = iframe.offsetHeight - 20;
-// console.log(width, height);
-// console.log(nodes.length);
+
 coordinates = getCircleCoordinates(nodes.length, width, height);
 const svg = d3.select("#svgID")
     .attr("width", width)
@@ -143,19 +161,52 @@ svg.append("defs").selectAll("marker")
 
 link.attr("marker-end", "url(#end)");
 
+/**
+ Handles the start of a drag event for a node.
+ */
 function dragstarted(event, d) {
     if (!event.active) simulation.alphaTarget(0.3).restart();
     d.fx = d.x;
     d.fy = d.y;
 }
 
+/**
+ Handles the dragging of a node in the graph.
+ */
 function dragged(event, d) {
     d.fx = event.x;
     d.fy = event.y;
 }
 
+/**
+ Handles the end of a drag event for a node.
+ */
 function dragended(event, d) {
     if (!event.active) simulation.alphaTarget(0);
     d.fx = null;
     d.fy = null;
 }
+
+/**
+ Handle messages from the parent window
+ Used to update node values
+ */
+window.addEventListener('message', function (event) {
+    if (event.data.type === 'updateValues') {
+        const updatedValues = event.data.values;
+        // Update node values and text
+        nodes.forEach(node => {
+            if (updatedValues[node.id] !== undefined) {
+                node.value = updatedValues[node.id];
+            }
+        });
+
+        // Update text for Topic nodes
+        node.each(function (d) {
+            if (d.type === 'Topic') {
+                d3.select(this).select("text")
+                    .text(`${d.name}: ${d.value}`);
+            }
+        });
+    }
+});

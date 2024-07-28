@@ -33,6 +33,7 @@ public class Graph extends ArrayList<Node> {
 
         for (Topic topic : tm.getTopics()) {
             Node topicNode = createTopicNode(topic, topicMap);
+            topic.setId(topicNode.toString().split("@")[1]);
             for (Agent a : topic.subs) {
                 Node agentNode = createAgentNode(a, agentMap);
                 topicNode.addEdge(agentNode);

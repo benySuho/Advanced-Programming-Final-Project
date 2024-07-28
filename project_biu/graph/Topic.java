@@ -8,6 +8,7 @@ public class Topic {
     Set<Agent> subs;
     Set<Agent> pubs;
     Message lastMsg;
+    String id;
 
     /**
      * Constructs a new Topic with the given name.
@@ -52,5 +53,13 @@ public class Topic {
             return null;
         }
         return lastMsg;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
