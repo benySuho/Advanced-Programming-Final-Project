@@ -47,10 +47,10 @@ public class Topic {
         pubs.remove(a);
     }
 
-    public String getLastMsg() {
+    public Message getLastMsg() {
         if (lastMsg == null) {
             return null;
         }
-        return lastMsg.asText;
+        return lastMsg;
     }
 }
