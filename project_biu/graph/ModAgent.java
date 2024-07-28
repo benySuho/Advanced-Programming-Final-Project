@@ -73,7 +73,7 @@ public class ModAgent implements Agent {
             secondMessage = msg.asDouble;
         } else return;
         // Publish only if two messages received
-        if (!(firstReceived && secondReceived))
+        if (!(firstReceived && secondReceived) || secondMessage==0)
             return;
         double out = firstMessage % secondMessage;
         TopicManagerSingleton.get().getTopic(outputTopic).publish(new Message(out));

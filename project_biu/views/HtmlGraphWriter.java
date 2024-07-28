@@ -3,42 +3,36 @@ package views;
 import graph.Graph;
 import graph.Node;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.lang.reflect.Field;
-import java.util.Collection;
-import java.util.Map;
-
 public class HtmlGraphWriter {
 
-    public static String[] getGraphHTML(Graph graph) {
-        String htmlTemplate = readHtmlFile("html_files/graph.html");
+    /**
+     * This function generates an HTML representation of a given graph.
+     *
+     * @param graph The graph to be represented in HTML.
+     * @return An array of strings, where each string represents a line of the HTML code.
+     * If the HTML template file cannot be read, an empty array is returned.
+     */
+    public static String[] getGraphHTML(Graph graph, String filePath) {
+        String htmlTemplate = HtmlReader.readHtmlFile(filePath);
         if (htmlTemplate == null) {
             return new String[]{""};
         }
 
-
         String graphJson = GraphToJson(graph);
-        String modifiedHtml = htmlTemplate.replace("<!--GRAPH_DATA-->", graphJson);
+        String modifiedHtml = htmlTemplate.replace("\"GRAPH_DATA\"", graphJson);
         return modifiedHtml.split("\n");
-
     }
 
-    private static String readHtmlFile(String filePath) {
-        StringBuilder contentBuilder = new StringBuilder();
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-            String currentLine;
-            while ((currentLine = br.readLine()) != null) {
-                contentBuilder.append(currentLine).append("\n");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-        return contentBuilder.toString();
-    }
-
+    /**
+     * Converts a given graph into a JSON string representation.
+     *
+     * @param graph The graph to be converted.
+     * @return A JSON string representing the graph. Each node in the graph is represented as a JSON object with the following properties:
+     * - "id": The unique identifier of the node.
+     * - "type": The type of the node (either "Topic" or "Agent").
+     * - "name": The name of the node.
+     * - "edges": An array of unique identifiers of the nodes connected to the current node.
+     */
     static String GraphToJson(Graph graph) {
         StringBuilder json = new StringBuilder("[");
         for (Node node : graph) {

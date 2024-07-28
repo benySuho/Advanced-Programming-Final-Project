@@ -2,6 +2,7 @@ package server;
 
 import servlets.Servlet;
 import server.RequestParser.RequestInfo;
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -43,7 +44,7 @@ public class MyHTTPServer extends Thread implements HTTPServer {
      *
      * @param httpCommand the HTTP command (GET, POST, DELETE) that the servlet will handle.
      * @param uri         the URI pattern that the servlet will match.
-     * @param servlet           the servlet instance.
+     * @param servlet     the servlet instance.
      */
     public void addServlet(String httpCommand, String uri, Servlet servlet) {
         this.servletsMap.get(httpCommand.toUpperCase()).put(uri, servlet);
