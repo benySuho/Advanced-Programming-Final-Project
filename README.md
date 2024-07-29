@@ -43,11 +43,10 @@ The project comprises the following main components:
 - **Real-Time Table Updates**: Displays current topic values in a dynamically updated table.
 
 ## Usage Example
-Basic Server Setup
+**Basic Server Setup**
 To run the HTTP server, you first need to instantiate the MyHTTPServer with a specified port number and the number of threads. After that, you can register different servlets to handle various types of HTTP requests. Here's a simple setup:
 
-java
-Copy code
+  ```sh
 // Create an instance of MyHTTPServer with port 8080 and a thread pool of 20 threads
 MyHTTPServer server = new MyHTTPServer(8080, 20);
 
@@ -57,16 +56,5 @@ server.addServlet("POST", "/calculator", new CalculatorServlet()); // Handles PO
 
 // Start the server
 server.start();
-
-## File Descriptions
-- **index.html**: Main HTML file featuring iframes for forms, graph display, and table.
-- **form.html**: Contains forms for user inputs.
-- **graph.html**: Displays the graphical representation of the computational graph.
-- **table.html**: Displays the current values of topics in a table format.
-- **Server.java**: Core server class managing HTTP requests.
-- **Graph.java**: Implements the logic for creating and managing the graph.
-- **Node.java**: Represents individual nodes within the graph.
-- **HtmlGraphWriter.java**: Generates HTML code for visualizing the graph.
-
-
+ ```
 
