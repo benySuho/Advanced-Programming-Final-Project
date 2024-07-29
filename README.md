@@ -49,14 +49,15 @@ The project comprises the following main components:
 To run the HTTP server, you first need to instantiate the MyHTTPServer with a specified port number and the number of threads. After that, you can register different servlets to handle various types of HTTP requests. Here's a simple setup:
 
   ```sh
-// Create an instance of MyHTTPServer with port 8080 and a thread pool of 20 threads
-MyHTTPServer server = new MyHTTPServer(8080, 20);
+// Create HTTP server on port 8080 with 5 threads
+HTTPServer myServer = new MyHTTPServer(8080, 5);
 
-// Register servlets to handle specific requests
-server.addServlet("GET", "/calculate", new CalculateServlet()); // Handles GET requests to /calculate
-server.addServlet("POST", "/calculator", new CalculatorServlet()); // Handles POST requests to /calculator
+// Define servlets for various endpoints
+myServer.addServlet("GET", "/publish", new TopicDisplayer());
+myServer.addServlet("GET", "/app/", new HtmlLoader("html_files"));
+myServer.addServlet("POST", "/upload", new ConfLoader());
 
 // Start the server
-server.start();
+myServer.start();
  ```
 
