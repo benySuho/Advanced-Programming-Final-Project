@@ -42,13 +42,21 @@ The project comprises the following main components:
 - **Interactive Forms**: Allows users to input and submit data through web forms.
 - **Real-Time Table Updates**: Displays current topic values in a dynamically updated table.
 
-## Usage
-1. **Open the Main HTML File:**
-   Open `index.html` in a web browser.
-2. **Submit Data via Forms:**
-   Use the forms to input and submit data.
-3. **View Updates:**
-   Observe real-time updates in the computational graph and the table of current topic values.
+## Usage Example
+Basic Server Setup
+To run the HTTP server, you first need to instantiate the MyHTTPServer with a specified port number and the number of threads. After that, you can register different servlets to handle various types of HTTP requests. Here's a simple setup:
+
+java
+Copy code
+// Create an instance of MyHTTPServer with port 8080 and a thread pool of 20 threads
+MyHTTPServer server = new MyHTTPServer(8080, 20);
+
+// Register servlets to handle specific requests
+server.addServlet("GET", "/calculate", new CalculateServlet()); // Handles GET requests to /calculate
+server.addServlet("POST", "/calculator", new CalculatorServlet()); // Handles POST requests to /calculator
+
+// Start the server
+server.start();
 
 ## File Descriptions
 - **index.html**: Main HTML file featuring iframes for forms, graph display, and table.
