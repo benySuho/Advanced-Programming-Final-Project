@@ -1,7 +1,9 @@
 # Advanced Programming Project
 
-## Overview
-This project is part of an advanced programming course and involves developing a generic HTTP server capable of handling various HTTP requests such as GET and POST. The server performs different operations based on client requests and provides dynamic, interactive views.
+## Background
+This project is part of an advanced programming course aimed at developing a deep understanding of essential software design patterns and architectures. The primary focus is on implementing a generic HTTP server capable of handling various types of HTTP requests, including GET and POST.
+
+The core objective is to build a versatile system that can support a publisher/subscriber architecture for computational graph processing. In this setup, nodes in the graph represent different computational tasks that operate concurrently. Each node’s output serves as the input for other nodes, enabling the execution of complex calculations.
 
 ## Installation
 
