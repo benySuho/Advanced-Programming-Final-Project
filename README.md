@@ -20,7 +20,7 @@ The core objective is to build a versatile system that can support a publisher/s
 
 2. **Compile the Project:**
     ```sh
-    javac -d project_biu -sourcepath project_biu\Main.java\*.java
+    javac -d project_biu -sourcepath project_biu\Main.java
     ```
 
 3. **Run the Main script:**
