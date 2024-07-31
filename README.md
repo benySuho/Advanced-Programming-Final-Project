@@ -20,15 +20,15 @@ The core objective is to build a versatile system that can support a publisher/s
 
 2. **Compile the Project:**
     ```sh
-    javac -d project_biu -sourcepath project_biu\Main.java
+   javac -d . -sourcepath . Main.java
     ```
 
 3. **Run the Main script:**
     ```sh
-   java project_biu\Main.java
+   java Main
     ```
 4. **Access the Application**
-   Open a web browser and navigate to http://localhost:8080/app/index.html to access the application interface.
+   Open a web browser and navigate to localhost:8080/app/ to access the application interface.
    
 ## Project Structure
 The project comprises the following main components:
