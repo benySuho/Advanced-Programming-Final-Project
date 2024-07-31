@@ -14,13 +14,13 @@ The core objective is to build a versatile system that can support a publisher/s
 ### Steps
 1. **Clone the Repository:**
     ```sh
-    git clone (https://github.com/benySuho/Advanced-Programming-Final-Project)
-    cd project_biu
+    git clone https://github.com/benySuho/Advanced-Programming-Final-Project.git
+    cd Advanced-Programming-Final-Project/project_biu
     ```
 
 2. **Compile the Project:**
     ```sh
-    javac -d bin -sourcepath src src/*.java
+    javac -d project_biu -sourcepath project_biu\Main.java\*.java
     ```
 
 3. **Run the Main script:**
